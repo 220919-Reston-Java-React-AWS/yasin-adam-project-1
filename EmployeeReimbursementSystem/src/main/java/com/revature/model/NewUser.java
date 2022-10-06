@@ -2,34 +2,23 @@ package com.revature.model;
 
 import java.util.Objects;
 
-public class User {
+public class NewUser {
 
-    private int id;
     private String firstName;
     private String lastName;
     private String username;
     private String password;
-    private int rolesId;
+    private String passwordAgain;
 
-
-    public User() {
+    public NewUser() {
     }
 
-    public User(int id, String firstName, String lastName, String username, String password, int rolesId) {
-        this.id = id;
+    public NewUser(String firstName, String lastName, String username, String password, String passwordAgain) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.rolesId = rolesId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.passwordAgain = passwordAgain;
     }
 
     public String getFirstName() {
@@ -64,23 +53,22 @@ public class User {
         this.password = password;
     }
 
-    public int getRolesId() {
-        return rolesId;
+    public String getPasswordAgain() {
+        return passwordAgain;
     }
 
-    public void setRolesId(int rolesId) {
-        this.rolesId = rolesId;
+    public void setPasswordAgain(String passwordAgain) {
+        this.passwordAgain = passwordAgain;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+        return "NewUser{" +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", rolesId=" + rolesId +
+                ", passwordAgain='" + passwordAgain + '\'' +
                 '}';
     }
 
@@ -88,13 +76,12 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id && rolesId == user.rolesId && firstName.equals(user.firstName) && lastName.equals(user.lastName) && username.equals(user.username) && password.equals(user.password);
+        NewUser newUser = (NewUser) o;
+        return firstName.equals(newUser.firstName) && lastName.equals(newUser.lastName) && username.equals(newUser.username) && password.equals(newUser.password) && passwordAgain.equals(newUser.passwordAgain);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, username, password, rolesId);
+        return Objects.hash(firstName, lastName, username, password, passwordAgain);
     }
 }
-

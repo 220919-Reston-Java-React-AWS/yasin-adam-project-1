@@ -1,24 +1,28 @@
 package com.revature.model;
 
+import java.util.Objects;
+
 public class Ticket {
 
     private int id;
-    private String category;
+    private double amount;
     private String description;
-    private int userId;
+
+    private int categoriesId;
     private int statusId;
+    private int usersId;
+
 
     public Ticket() {
     }
 
-    public Ticket(int id, String category, String description, int userId, int statusId)  {
-
+    public Ticket(int id, double amount, String description, int categoriesId, int statusId, int usersId) {
         this.id = id;
-        this.category = category;
+        this.amount = amount;
         this.description = description;
-        this.userId = userId;
+        this.categoriesId = categoriesId;
         this.statusId = statusId;
-
+        this.usersId = usersId;
     }
 
     public int getId() {
@@ -29,12 +33,12 @@ public class Ticket {
         this.id = id;
     }
 
-    public String getCategory() {
-        return category;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public String getDescription() {
@@ -45,12 +49,12 @@ public class Ticket {
         this.description = description;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getCategoriesId() {
+        return categoriesId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setCategoriesId(int categoriesId) {
+        this.categoriesId = categoriesId;
     }
 
     public int getStatusId() {
@@ -59,5 +63,38 @@ public class Ticket {
 
     public void setStatusId(int statusId) {
         this.statusId = statusId;
+    }
+
+    public int getUsersId() {
+        return usersId;
+    }
+
+    public void setUsersId(int usersId) {
+        this.usersId = usersId;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", descriptionId=" + description +
+                ", categoriesId=" + categoriesId +
+                ", statusId=" + statusId +
+                ", usersId=" + usersId +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return id == ticket.id && Double.compare(ticket.amount, amount) == 0 && description == ticket.description && categoriesId == ticket.categoriesId && statusId == ticket.statusId && usersId == ticket.usersId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, amount, description, categoriesId, statusId, usersId);
     }
 }
